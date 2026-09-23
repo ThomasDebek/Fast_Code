@@ -11,6 +11,16 @@ class Burger
     @stock > 0
   end
 
+  def score
+    if @price <= 50
+      "Good"
+    elsif @price <= 100
+      "Average"
+    else
+      "Not Good"
+    end
+  end
+
   def good_price?
     @price <= 50
   end
@@ -33,7 +43,10 @@ class Burger
 
   def info_burger
     if available?
-      puts "#{name} is available. Price: #{price} PLN. Stock: #{stock}."
+      puts "#{name} is available."
+      puts "Price: #{price} PLN."
+      puts "Stock: #{stock}."
+      puts "Score: #{score}."   # <--- TUTAJ WYKORZYSTUJESZ METODĘ score
     else
       puts "#{name} is out of stock."
     end
