@@ -1,11 +1,12 @@
 class Burger
-  attr_accessor :name, :price, :stock, :size
+  attr_accessor :name, :price, :stock, :size, :extras
 
   def initialize(name, price, stock, size )
     @name = name
     @price = price
     @stock = stock
     @size = size
+    @extras = []
   end
 
   def available?
@@ -22,6 +23,15 @@ class Burger
     else
       p "Your #{name} is #{@price} PLN."
     end
+  end
+
+
+  def add_extras(name, price)
+    @extras << [name, price]
+  end
+
+  def total_price
+    @price + @extras.map(&:last).sum
   end
 
 
@@ -82,6 +92,8 @@ class Burger
       puts "Stock: #{stock}."
       puts "Score: #{score}."
       puts "Size: #{size_price}."
+      puts "Extras: #{extras}"
+      puts "Total: #{total_price}"
     else
       puts "#{name} is out of stock."
     end
@@ -96,3 +108,6 @@ classic_burger.sell
 classic_burger.info_burger
 classic_burger.customer_rating(3)
 classic_burger.size_price
+classic_burger.add_extras("Cheese", 5)
+classic_burger.add_extras("Cheese", 5)
+classic_burger.info_burger
