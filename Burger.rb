@@ -1,14 +1,27 @@
 class Burger
-  attr_accessor :name, :price, :stock
+  attr_accessor :name, :price, :stock, :size
 
-  def initialize(name, price, stock)
+  def initialize(name, price, stock, size )
     @name = name
     @price = price
     @stock = stock
+    @size = size
   end
 
   def available?
     @stock > 0
+  end
+
+  def size_price
+    if @size == "small"
+      p  "Your #{name} is #{@price} PLN."
+    elsif @size == "medium"
+      p "Your #{name} is #{@price + 10} PLN."
+    elsif @size == "large"
+      p "Your #{name} is #{@price + 20} PLN."
+    else
+      p "Your #{name} is #{@price} PLN."
+    end
   end
 
 
@@ -67,17 +80,19 @@ class Burger
       puts "#{name} is available."
       puts "Price: #{price} PLN."
       puts "Stock: #{stock}."
-      puts "Score: #{score}."   # <--- TUTAJ WYKORZYSTUJESZ METODĘ score
+      puts "Score: #{score}."
+      puts "Size: #{size_price}."
     else
       puts "#{name} is out of stock."
     end
   end
 end
 
-classic_burger = Burger.new("Classic Burger", 40, 200)
+classic_burger = Burger.new("Classic Burger", 40, 200, "large")
 
 classic_burger.add_stock(50)
 
 classic_burger.sell
 classic_burger.info_burger
 classic_burger.customer_rating(3)
+classic_burger.size_price
