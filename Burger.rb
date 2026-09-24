@@ -52,6 +52,16 @@ class Burger
     end
   end
 
+  def customer_rating(rating)
+    if rating >= 4
+      puts "#{name} has very good customer reviews."
+    elsif rating >= 3
+      puts "#{name} has average customer reviews."
+    else
+      puts "#{name} has poor customer reviews."
+    end
+  end
+
   def info_burger
     if available?
       puts "#{name} is available."
@@ -70,3 +80,4 @@ classic_burger.add_stock(50)
 
 classic_burger.sell
 classic_burger.info_burger
+classic_burger.customer_rating(3)
