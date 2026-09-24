@@ -11,6 +11,17 @@ class Burger
     @stock > 0
   end
 
+
+  def add_stock(amount)
+    if amount > 0
+      @stock += amount
+      p "Added #{amount} burgers to stock. New stock: #{@stock}."
+      p "Current stock: #{@stock}"
+    else
+      p "Amount out of stock "
+    end
+  end
+
   def score
     if @price <= 50
       "Good"
@@ -54,6 +65,8 @@ class Burger
 end
 
 classic_burger = Burger.new("Classic Burger", 40, 200)
+
+classic_burger.add_stock(50)
 
 classic_burger.sell
 classic_burger.info_burger
