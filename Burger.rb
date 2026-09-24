@@ -45,6 +45,17 @@ class Burger
     end
   end
 
+  def remove_extras(name)
+    extra = @extras.find { |extra| extra[0] == name }
+
+    if extra
+      @extras.delete(extra)
+      p "Removed extra: #{name}"
+    else
+      p "No extra: #{name}"
+    end
+  end
+
   def score
     if @price <= 50
       "Good"
@@ -108,6 +119,14 @@ classic_burger.sell
 classic_burger.info_burger
 classic_burger.customer_rating(3)
 classic_burger.size_price
+
+classic_burger.add_extras("Cheese", 4)
+classic_burger.add_extras("Bacon", 8)
 classic_burger.add_extras("Cheese", 5)
-classic_burger.add_extras("Cheese", 5)
+classic_burger.add_extras("Onion", 3)
+
+classic_burger.info_burger
+classic_burger.add_extras("Cheese", 6)
+classic_burger.remove_extras("Cheese")
+classic_burger.remove_extras("Cheese")
 classic_burger.info_burger
