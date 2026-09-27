@@ -96,6 +96,41 @@ class Burger
     end
   end
 
+  def show_extras
+    @extras.each do |extra|
+      puts "- #{extra[0]}: #{extra[1]} PLN"
+    end
+  end
+
+  def expensive_extras
+    @extras.each do
+      |extra|
+      if extra[1] > 5
+        puts "----------"*5
+        puts "- #{extra[0]}: #{extra[1]} PLN"
+      end
+    end
+  end
+
+  def find_extra(name)
+    extra = @extras.find { |extra| extra[0] == name }
+    if extra
+      puts "Found extra: #{extra[0]} - #{extra[1]} PLN"
+    else
+      puts "No extra found with name: #{name}"
+    end
+  end
+
+
+  def change_price(new_price)
+    if new_price > 0
+      @price = new_price
+      puts "#{new_price} changed."
+    else
+      puts "#{new_price} is not a valid price."
+    end
+  end
+
   def info_burger
     if available?
       puts "#{name} is available."
@@ -129,4 +164,11 @@ classic_burger.info_burger
 classic_burger.add_extras("Cheese", 6)
 classic_burger.remove_extras("Cheese")
 classic_burger.remove_extras("Cheese")
+classic_burger.info_burger
+
+
+classic_burger.show_extras
+classic_burger.expensive_extras
+classic_burger.find_extra("Bacon")
+classic_burger.change_price(45)
 classic_burger.info_burger
