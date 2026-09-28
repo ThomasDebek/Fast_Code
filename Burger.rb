@@ -112,6 +112,18 @@ class Burger
     end
   end
 
+
+  def cheapest_extras
+    if @extras.empty?
+      p "NO extras found!"
+    else
+      extra = @extras.min_by { |extra| extra[1] }
+
+      p "--extras--extras--"*3
+      p "#{extra[0]}: #{extra[1]} PLN"
+    end
+  end
+
   def find_extra(name)
     extra = @extras.find { |extra| extra[0] == name }
     if extra
@@ -172,3 +184,4 @@ classic_burger.expensive_extras
 classic_burger.find_extra("Bacon")
 classic_burger.change_price(45)
 classic_burger.info_burger
+classic_burger.cheapest_extras
